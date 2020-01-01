@@ -1,3 +1,99 @@
-h1{
-    color: green;
+.chatbox{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    height: 350px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0px 5px grey;
+    .chatbox-header{
+        padding: 5px;
+        background-color: blue;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .chatbox-title{
+            font-size: medium;
+        }
+        .chatbox-actions{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .chatbox-action{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-right: 0px;
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                line-height: 20px;
+                font-size: 2em;
+                text-align: center;
+                &:hover{
+                    font-size: 2.1em;
+                }
+            }
+        }
+    }
+    .chatbox-log{
+        height: 250px;
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        background-color: lightblue;
+    }
+    .chatbox-msg{
+        height: 60px;
+        display: flex;
+        .chat-msg-box{
+            width: 190px;
+            height: 60px;
+            textarea#chat-msg{
+                width: 185px;
+                height: 55px;
+                resize: none;
+                border: none;
+                border-right: 1px solid lightblue;
+            }
+        }
+        .chat-send-button{
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            line-height: 60px;
+            text-align: center;
+            color: rgb(96, 103, 116);
+        }
+    }
+}
+.hide{
+    display: none;
+}
+.show{
+    display: flex;
+}
+.minimize{
+    height: 30px;
+    bottom: 0px;
+    box-shadow: 0px 0px 0px grey;
+    .chatbox-log{
+        display: none;
+    }
+    .chatbox-msg{
+        display: none;
+    }
+}
+.maximize{
+    height: 350px;
+    bottom: 10px;
+    box-shadow: 2px 0px 5px grey;
+    .chatbox-log{
+        display: flex;
+    }
+    .chatbox-msg{
+        display: flex;
+    }
 }

@@ -5,14 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./ts/index.ts"></script>
+    <link rel="stylesheet" href="./scss/styles.scss">
     <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
     <title>ChatBox TypeScript</title>
 </head>
 
 <body>
-    <div id="app"></div>
-    <script src="./ts/index.ts"></script>
-    <link rel="stylesheet" href="./scss/styles.scss">
+    <div id="chatBox" class="chatbox hide maximize">
+        <div class="chatbox-header">
+            <div class="chatbox-title">ChatBot</div>
+            <div class="chatbox-actions">
+                <div class="chatbox-action">-</div>
+            </div>
+        </div>
+        <div class="chatbox-log">
+            <div class="chat-content"></div>
+        </div>
+        <div class="chatbox-msg">
+            <div class="chat-msg-box">
+                <textarea name="chat-msg" id="chat-msg" cols="20" rows="3"></textarea>
+            </div>
+            <div class="chat-send-button">SEND</div>
+        </div>
+    </div>
 </body>
 
 </html>
