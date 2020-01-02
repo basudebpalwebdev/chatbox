@@ -1,8 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     let isMinimized: boolean = false;
+    /**
+     * Gets the stored cookie value for chat window state
+     */
     const cookieValue: string | null = getCookie('isMinimized');
     const chatBox = document.getElementById('basu-chat-box');
     const chatBoxAction = chatBox!.querySelector('.basu-chatbox-action');
+    /**
+     * Defining svg for minimize and maximize buttons
+     */
     const chevronDownSvg: string = `
         <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512">
@@ -19,9 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
             </path>
         </svg>
     `;
-
+    /**
+     * Setting the boolean check from cookie data
+     */
     isMinimized = cookieValue === null ? false : cookieValue.toLowerCase() === 'true' ? true : false;
-
+    /**
+     * Sets the chat window position according to the cookie value
+     */
     if (isMinimized) {
         chatBoxAction!.innerHTML = chevronUpSvg;
         chatBox!.classList.replace('basu-maximize', 'basu-minimize');
@@ -29,31 +39,47 @@ document.addEventListener('DOMContentLoaded', () => {
         chatBoxAction!.innerHTML = chevronDownSvg;
         chatBox!.classList.replace('basu-minimize', 'basu-maximize');
     }
-
-    setTimeout(() => {
-        chatBox!.classList.remove('basu-hidden');
-        isMinimized ? chatBox!.classList.add('basu-minimize') : chatBox!.classList.add('basu-maximize');
-    }, 5000);
-
+    /**
+     * Clicking on the minimize or maximize buttons would toggle the value of @var isMinimized,
+     * change state of the chat window and save the state in cookie
+     */
     chatBoxAction!.addEventListener('click', () => {
-        if (isMinimized) {
-            isMinimized = false;
-            chatBoxAction!.innerHTML = chevronDownSvg;
-            chatBox!.classList.replace('basu-minimize', 'basu-maximize');
-            document.cookie = 'isMinimized=false;';
-        } else {
-            isMinimized = true;
-            chatBoxAction!.innerHTML = chevronUpSvg;
-            chatBox!.classList.replace('basu-maximize', 'basu-minimize');
-            document.cookie = 'isMinimized=true;';
+        try {
+            if (isMinimized) {
+                isMinimized = false;
+                chatBoxAction!.innerHTML = chevronDownSvg;
+                chatBox!.classList.replace('basu-minimize', 'basu-maximize');
+                document.cookie = 'isMinimized=false;';
+            } else {
+                isMinimized = true;
+                chatBoxAction!.innerHTML = chevronUpSvg;
+                chatBox!.classList.replace('basu-maximize', 'basu-minimize');
+                document.cookie = 'isMinimized=true;';
+            }
+        } catch (error) {
+            console.error(error);
         }
-
     });
+    /**
+     * Shows the chat window 5 seconds after the page has been loaded
+     */
+    setTimeout(() => {
+        isMinimized ? chatBox!.classList.add('basu-minimize') : chatBox!.classList.add('basu-maximize');
+        chatBox!.classList.remove('basu-hidden');
+    }, 5000);
 });
-
+/**
+ * This function processes the cookie string to find the value of the key supplied in the argument @param key .
+ * The function returns the value or 'null' in case it fails to find the cookie.
+ */
 function getCookie(key: string): string | null {
-    return document.cookie.split(';').reduce((value: string | null, currentCookie: string) => {
-        var arr = currentCookie.split('=');
-        return (arr[0].trim() === key) ? arr[1] : value;
-    }, null);
+    try {
+        return document.cookie.split(';').reduce((value: string | null, currentCookie: string) => {
+            var arr = currentCookie.split('=');
+            return (arr[0].trim() === key) ? arr[1] : value;
+        }, null);
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
 }
