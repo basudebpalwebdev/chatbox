@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     let isMinimized: boolean = false;
     const cookieValue: string | null = getCookie('isMinimized');
-    const chatBox = document.getElementById('chatBox');
-    const chatBoxAction = chatBox!.querySelector('.chatbox-action');
+    const chatBox = document.getElementById('basu-chat-box');
+    const chatBoxAction = chatBox!.querySelector('.basu-chatbox-action');
     const chevronDownSvg: string = `
         <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512">
@@ -24,27 +24,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (isMinimized) {
         chatBoxAction!.innerHTML = chevronUpSvg;
-        chatBox!.classList.replace('maximize', 'minimize');
+        chatBox!.classList.replace('basu-maximize', 'basu-minimize');
     } else {
         chatBoxAction!.innerHTML = chevronDownSvg;
-        chatBox!.classList.replace('minimize', 'maximize');
+        chatBox!.classList.replace('basu-minimize', 'basu-maximize');
     }
 
     setTimeout(() => {
-        chatBox!.classList.remove('hidden');
-        isMinimized ? chatBox!.classList.add('minimize') : chatBox!.classList.add('maximize');
+        chatBox!.classList.remove('basu-hidden');
+        isMinimized ? chatBox!.classList.add('basu-minimize') : chatBox!.classList.add('basu-maximize');
     }, 5000);
 
     chatBoxAction!.addEventListener('click', () => {
         if (isMinimized) {
             isMinimized = false;
             chatBoxAction!.innerHTML = chevronDownSvg;
-            chatBox!.classList.replace('minimize', 'maximize');
+            chatBox!.classList.replace('basu-minimize', 'basu-maximize');
             document.cookie = 'isMinimized=false;';
         } else {
             isMinimized = true;
             chatBoxAction!.innerHTML = chevronUpSvg;
-            chatBox!.classList.replace('maximize', 'minimize');
+            chatBox!.classList.replace('basu-maximize', 'basu-minimize');
             document.cookie = 'isMinimized=true;';
         }
 

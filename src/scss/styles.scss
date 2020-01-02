@@ -1,7 +1,11 @@
+@font-face {font-family: 'Raleway'; src: './font/Raleway-Regular.ttf'};
+
 body{
     background-color: lightblue;
+    font-family: 'Raleway', sans-serif;
+    font-size: .8em;
 }
-.chatbox{
+.basu-chatbox{
     position: fixed;
     right: 3%;
     bottom: 10px;
@@ -12,27 +16,27 @@ body{
     overflow: hidden;
     box-shadow: 2px 0px 5px grey;
     transition: all 0.5s ease;
-    .chatbox-header{
+    .basu-chatbox-header{
         padding: 5px;
         background-color: royalblue;
         color: white;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        .chatbox-title{
-            width: 20px;
-            height: 20px;
+        .basu-chatbox-title{
+            width: 25px;
+            height: 25px;
             padding: 5px;
             text-align: center;
             svg{
                 color: white;
             }
         }
-        .chatbox-actions{
+        .basu-chatbox-actions{
             display: flex;
             justify-content: center;
             align-items: center;
-            .chatbox-action{
+            .basu-chatbox-action{
                 margin-right: 0px;
                 width: 20px;
                 height: 20px;
@@ -53,54 +57,56 @@ body{
             }
         }
     }
-    .chatbox-log{
+    .basu-chatbox-log{
         height: 250px;
         padding: 5px;
         display: flex;
         overflow-y: scroll;
         flex-direction: column;
         background-color: lightcyan;
-        .chat-msg-row{
+        .basu-chat-msg-row{
             margin-bottom: 5px;
-            .chat-bubble{
+            .basu-chat-bubble{
                 width: 150px;
                 color: whitesmoke;
                 padding: 5px;
                 border-radius: 4px;
                 box-shadow: 2px 0px 5px grey;
             }
-            .chat-bubble-right{
+            .basu-chat-bubble-right{
                 background-color: darkslateblue;
                 margin-right: 2px;
                 margin-left: auto;
             }
-            .chat-bubble-left{
+            .basu-chat-bubble-left{
                 background-color: forestgreen;
                 margin-left: 2px;
                 margin-right: auto;
             }
         }
     }
-    .chatbox-msg{
+    .basu-chatbox-msg{
         height: 60px;
         display: flex;
-        .chat-msg-box{
+        .basu-chat-msg-box{
             width: 190px;
             height: 60px;
-            textarea#chat-msg{
+            textarea#basu-chat-msg{
                 width: 185px;
-                height: 56px;
+                height: 55px;
+                padding: 5px;
+                color: darkcyan;
                 resize: none;
                 border: none;
-                border-right: 1px solid lightblue;
             }
         }
-        .chat-send-button{
+        .basu-chat-send-button{
             cursor: pointer;
             background-color: white;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border-left: 1px solid lightblue;
             &:hover{
                 svg{
                     padding: 10px;
@@ -117,36 +123,36 @@ body{
         }
     }
 }
-.hidden{
+.basu-hidden{
     display: none;
 }
-.minimize{
-    height: 40px;
+.basu-minimize{
+    height: 45px;
     bottom: 10px;
     box-shadow: 0px 0px 0px grey;
     transition: all 0.5s ease;
     overflow: hidden;
-    .chatbox-log{
+    .basu-chatbox-log{
         transition: all 0.5s ease;
         overflow: hidden;
         height: 0px;
     }
-    .chatbox-msg{
+    .basu-chatbox-msg{
         transition: all 0.5s ease;
         overflow: hidden;
         height: 0px;
     }
 }
-.maximize{
+.basu-maximize{
     height: 350px;
     bottom: 10px;
     box-shadow: 2px 0px 5px grey;
     transition: all 0.5s ease;
-    .chatbox-log{
+    .basu-chatbox-log{
         transition: all 0.5s ease;
         height: 250px;
     }
-    .chatbox-msg{
+    .basu-chatbox-msg{
         transition: all 0.5s ease;
         height: 60px;
     }
