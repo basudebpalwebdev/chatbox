@@ -1,5 +1,5 @@
 .chatbox{
-    position: absolute;
+    position: fixed;
     right: 20px;
     bottom: 10px;
     height: 350px;
@@ -15,25 +15,32 @@
         flex-direction: row;
         justify-content: space-between;
         .chatbox-title{
-            font-size: medium;
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 10px;
+            font-size: 1.2em;
         }
         .chatbox-actions{
             display: flex;
             justify-content: center;
             align-items: center;
             .chatbox-action{
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 margin-right: 0px;
                 width: 20px;
                 height: 20px;
                 cursor: pointer;
-                line-height: 20px;
-                font-size: 2em;
+                padding: 5px;
                 text-align: center;
+                svg{
+                    width: 18px;
+                    height: 18px;
+                    color: white;
+                }
                 &:hover{
-                    font-size: 2.1em;
+                    svg{
+                        width: 20px;
+                        height: 20px;
+                    }
                 }
             }
         }
@@ -62,10 +69,15 @@
         .chat-send-button{
             width: 60px;
             height: 60px;
+            padding: 10px;
             cursor: pointer;
-            line-height: 60px;
             text-align: center;
-            color: rgb(96, 103, 116);
+            &:hover{
+                padding: 8px;
+            }
+            svg{
+                color: lightskyblue;
+            }
         }
     }
 }
@@ -76,7 +88,7 @@
     display: flex;
 }
 .minimize{
-    height: 30px;
+    height: 50px;
     bottom: 0px;
     box-shadow: 0px 0px 0px grey;
     .chatbox-log{
