@@ -1,24 +1,32 @@
+body{
+    background-color: lightblue;
+}
 .chatbox{
     position: fixed;
-    right: 20px;
+    right: 3%;
     bottom: 10px;
     height: 350px;
     width: 250px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     box-shadow: 2px 0px 5px grey;
+    transition: all 0.5s ease;
     .chatbox-header{
         padding: 5px;
-        background-color: blue;
+        background-color: royalblue;
         color: white;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         .chatbox-title{
-            margin-top: auto;
-            margin-bottom: auto;
-            margin-left: 10px;
-            font-size: 1.2em;
+            width: 20px;
+            height: 20px;
+            padding: 5px;
+            text-align: center;
+            svg{
+                color: white;
+            }
         }
         .chatbox-actions{
             display: flex;
@@ -49,8 +57,29 @@
         height: 250px;
         padding: 5px;
         display: flex;
+        overflow-y: scroll;
         flex-direction: column;
-        background-color: lightblue;
+        background-color: lightcyan;
+        .chat-msg-row{
+            margin-bottom: 5px;
+            .chat-bubble{
+                width: 150px;
+                color: whitesmoke;
+                padding: 5px;
+                border-radius: 4px;
+                box-shadow: 2px 0px 5px grey;
+            }
+            .chat-bubble-right{
+                background-color: darkslateblue;
+                margin-right: 2px;
+                margin-left: auto;
+            }
+            .chat-bubble-left{
+                background-color: forestgreen;
+                margin-left: 2px;
+                margin-right: auto;
+            }
+        }
     }
     .chatbox-msg{
         height: 60px;
@@ -60,52 +89,65 @@
             height: 60px;
             textarea#chat-msg{
                 width: 185px;
-                height: 55px;
+                height: 56px;
                 resize: none;
                 border: none;
                 border-right: 1px solid lightblue;
             }
         }
         .chat-send-button{
-            width: 60px;
-            height: 60px;
-            padding: 10px;
             cursor: pointer;
-            text-align: center;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             &:hover{
-                padding: 8px;
+                svg{
+                    padding: 10px;
+                    width: 40px;
+                    height: 40px;
+                }
             }
             svg{
-                color: lightskyblue;
+                padding: 15px;
+                width: 30px;
+                height: 30px;
+                color: royalblue;
             }
         }
     }
 }
-.hide{
+.hidden{
     display: none;
 }
-.show{
-    display: flex;
-}
 .minimize{
-    height: 50px;
-    bottom: 0px;
+    height: 40px;
+    bottom: 10px;
     box-shadow: 0px 0px 0px grey;
+    transition: all 0.5s ease;
+    overflow: hidden;
     .chatbox-log{
-        display: none;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        height: 0px;
     }
     .chatbox-msg{
-        display: none;
+        transition: all 0.5s ease;
+        overflow: hidden;
+        height: 0px;
     }
 }
 .maximize{
     height: 350px;
     bottom: 10px;
     box-shadow: 2px 0px 5px grey;
+    transition: all 0.5s ease;
     .chatbox-log{
-        display: flex;
+        transition: all 0.5s ease;
+        height: 250px;
     }
     .chatbox-msg{
-        display: flex;
+        transition: all 0.5s ease;
+        height: 60px;
     }
 }
